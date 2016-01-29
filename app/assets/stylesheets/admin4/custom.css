@@ -1,0 +1,224 @@
+/* here you can put your own css to customize and override the theme */
+ 
+/***
+Rounded Portlets
+***/
+/*
+.portlet {
+    border-radius: 4px !important;
+}
+ 
+.portlet .portlet-title {
+    border-radius: 4px 4px 0px 0px !important;
+}
+ 
+.portlet .portlet-body,
+.portlet .portlet-body .form-actions  {
+    border-radius: 0px 0px 4px 4px !important;
+}
+*/
+ 
+/*
+TIPSTER LIST
+*/
+.tipster-portlet {
+/*  padding-top: 10px;
+    padding-bottom: 10px;*/
+    min-height: 30px !important;
+}
+ 
+.tipster-caption {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+ 
+.tipster-name h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+ 
+.tb-margin {
+    margin: auto;
+    float: none;
+}
+ 
+.tb-center {
+    text-align: center;
+}
+ 
+.tb-left {
+    text-align: left !important;
+}
+ 
+.tb-right {
+    text-align: right !important;
+}
+ 
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 70%;
+  height: 70%;
+/*  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;*/
+}
+ 
+ 
+.tipster-stat, 
+.tipster-stat-big,
+.tb-nav-balance {
+    font-family: 'Roboto Condensed', san-serif;
+    font-weight: 300;
+    font-size: 1.5em;
+    color: #4B77BE;
+    text-align: center;
+}
+ 
+.tipster-stat-big {
+    font-size: 1.8em;
+}
+ 
+.tb-stat-sm {
+    font-size: 0.8em;
+}
+ 
+.achievements img {
+    display: inline-block;
+    width: 12%;
+    height: 12%;
+}
+ 
+.wdl-win,
+.wdl-draw,
+.wdl-lose {
+    float: none;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+ 
+.wdl-win {
+    background-color: #3598dc;
+}
+ 
+.wdl-draw{
+    background-color: #F4D03F;
+}
+ 
+.wdl-lose {
+    background-color: #e35b5a;
+}
+ 
+.tipster-follow-btn {
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 15px;
+}
+ 
+/* MEDIA QUERY */
+@media (min-width: 993px) {
+    .page-content-wrapper .tb-page {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+    .tb-portlet-width {
+        max-width: 964px;
+    }
+    .tipster-stat {
+        font-size: 2em;
+    }
+  }
+ 
+@media (min-width: 768px, max-width: 992px) {
+    .tb-portlet-width {
+        min-width: 718px;
+        max-width: 780px;
+    }
+    .page-content-wrapper .tb-page {
+    margin-left: 5% !important;
+    }
+  }
+ 
+@media (max-width: 767px) {
+    .tipster-stat {
+        font-size: 1.3em;
+    }
+ 
+    .tb-hide {
+        display: none;
+    }
+ 
+    .tb-float-left {
+        float: left !important;
+    }
+}
+ 
+@media (min-width: 1200px) {
+    .timeline-item {
+    width: 70%;
+    }
+}
+ 
+ 
+/*
+USER TIMELINE
+*/
+ 
+.tb-timeline-bg {
+    background: #fff;
+}
+ 
+.tb-timeline-arrow {
+    border-color: transparent #fff transparent transparent;
+}
+ 
+/* 
+NAV BAR
+*/
+ 
+.tb-logo {
+    width: 140px;
+    margin-top: 20px;
+    margin-left: 8px;
+}
+ 
+.tb-sidebar-search {
+    padding: 8px 8px 2px 20px;
+    background: #578ebe;
+}
+ 
+.tb-nav-balance {
+    margin-top: 24px;
+    margin-right: 8px;
+}
+ 
+ 
+/*
+PROGRESS
+*/
+.match-bias {
+    height: 20px;
+}
+ 
+/*
+COMMISSIONS
+*/
+.commission-info {
+    padding: 5px 10px 10px 10px;
+    margin-bottom: 20px;
+}
+ 
+.tb-subscription-btn {
+    margin-top: 25px;
+}
+ 
+/*
+PROFILE SIDEBAR
+*/
+.tb-profile-sidebar {
+    padding: 5px 15px 20px 15px;
+}

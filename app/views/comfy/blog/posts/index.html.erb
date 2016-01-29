@@ -1,0 +1,46 @@
+
+
+<h1>Tipster Buddy Blog</h1>
+              
+<h3>Life is like a game of soccer:you need goals</h3>
+              
+<img height="400" src="http://pentagist.com/wp-content/uploads/2014/08/Football-Stadium-Real-Madrid-New-Hd-Quality-With-2840626.jpg" width="1600"/>
+                  
+
+<% @posts.each do |post| %>
+  <h1>
+    <%= link_to post.title, comfy_blog_post_path(@cms_site.path, @blog.path, post.slug) %>
+  </h1>
+  <div class="author">
+    <%= post.author %>
+  </div>
+  <div class="date">
+    <%= post.published_at.to_s(:db) %>
+  </div>
+  <div class="entry">
+    <%= post.excerpt.html_safe %>
+  </div>
+  <div class="byline"></div>
+  <p class="links">
+    <%= link_to "Read More",comfy_blog_post_path(@cms_site.path, @blog.path, post.slug) %>
+  </p>
+<% end %>
+<%= comfy_paginate @posts %>
+
+
+<!-- Sidebar -->
+
+<h2>Recent Posts</h2>
+
+<% @posts.each do |post| %>
+  <h3>
+    <%= link_to post.title, comfy_blog_post_path(@cms_site.path, @blog.path, post.slug) %>
+  </h3>
+<% end %>
+
+<h2>Share this</h2>
+
+<%= render_shareable :buttons=> ['facebook', 'twitter', 'tumblr', 'google_plus'] %>
+
+
+     

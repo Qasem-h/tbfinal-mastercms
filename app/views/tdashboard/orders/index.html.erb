@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-md-12">
+    <% @orders.each do |order| %>
+    <div class="portlet box green">
+      <div class="portlet-title">
+        <div class=caption>
+          Transaction ID : <%= order.id %> | <%= order.created_at.strftime("%d %b %Y %R") %>
+        </div>
+      </div>
+      <div class="portlet-body table-responsive">
+        <div class="body">
+          <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <th width="30%">Match</th>
+                <th width="10%">Bet Type</th>
+                <th width="15%">Bet</th>
+                <th width="5%">Goal</th>
+                <th width="5%">Odds</th>
+                <th width="10%">Status</th>
+                <th width="10%">Full Time</th>
+                <th width="15%">Kick Off</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% order.picks.each do |pick| %>
+              <tr>
+                <td><%= pick.match.name %></td>
+                <td><%= pick.bettype %></td>
+                <td><%= pick.team %></td>
+                <td>--</td>
+                <td><%= pick.odds %></td>
+                <td>
+                  <% if pick.pickstatus.nil? %>
+                     Pending
+                  <% else %>
+                    <%= pick.pickstatus %>
+                  <% end %>
+                </td>
+                <td>-</td>
+                <td> <%= pick.match.date.strftime("%d %b %Y : %H:%M") %></td>
+              </tr>
+              <% end %>
+              </tbody>
+              <tbody>
+                <tr>
+                  <td>Betslip Status</td>
+                  <th class="table-right">
+                    <% if order.status.nil? %>
+                      Pending
+                    <% else %>
+                      <%= order.status %>
+                    <% end %>
+                  </th>
+                </tr>
+                <tr>
+                  <td>Stake</td>
+                  <th class="table-right">
+                    <%= order.stake %>
+                  </th>
+                </tr>
+                <tr>
+                  <td>Max Possible Winnings</td>
+                  <th class="table-right"><%= order.possible_winnings %></th>
+                </tr>
+                <tr>
+                  <td>Real Winnings</td>
+                  <th>
+                    <% if order.winnings.nil? %>
+                    Pending
+                    <% else %>
+                    <%= order.winnings %>
+                    <% end %>
+                  </th>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+        <% end %>
+      </div>
+      <%= will_paginate @orders %>
+    </div>
+                    
+                    

@@ -1,0 +1,69 @@
+					<div class="col-md-6">
+						<!-- BEGIN PORTLET 2-->
+						<div class="portlet light bordered">
+							<div class="portlet-title">
+								<div class="caption caption-md font-blue-madison">
+									<i class="icon-bar-chart theme-font hide"></i>
+									<span class="caption-subject theme-font bold uppercase">In-Depth Stats</span>
+									<span class="caption-helper hide"></span>
+								</div>
+								<div class="tools">
+									<a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+								</div>
+							</div>
+							<div class="portlet-body">
+								<div class="table-scrollable table-scrollable-borderless">
+									<table class="table table-hover table-light">
+										<tbody>
+											<tr>
+												<td class="uppercase tb-stat-sm"> 
+                          <% if current_tipster.winning.value > 0 %>
+                          Current Winning Streak:
+                        </td>
+                        <td class="tipster-stat font-blue tb-left">
+                          <%= current_tipster.winning.value %>
+                          <% elsif current_tipster.losing.value > 0 %>
+                          Current Losing Streak:
+                        </td>
+                        <td class="tipster-stat font-blue tb-left">
+                          <%= current_tipster.losing.value %>
+                          <% else %>
+                          Current Winning Streak:
+                        </td> 
+                        <td class="tipster-stat font-blue tb-left">
+                            0
+                          <% end %>
+                        </td>
+													<td class="uppercase tb-stat-sm">Max Open Bets</td>
+													<td class="tipster-stat font-blue tb-left"><%= current_tipster.openbets %> <span class="tb-stat-sm">(<%= number_to_currency(current_tipster.maxopenstakes) %>)</span></td>
+												</tr>
+											</tr>
+											<tr>
+												<td class="uppercase tb-stat-sm">Max Winning Streaks</td>
+												<td class="tipster-stat font-blue tb-left"><%= current_tipster.winning_streak.value %></td>
+												<td class="uppercase tb-stat-sm">Max Losing Streaks</td>
+												<td class="tipster-stat font-blue tb-left"><%= current_tipster.losing_streak.value %></td>
+											</tr>
+											<tr>
+												<td class="uppercase tb-stat-sm">Stake Ratio</td>
+                        <% if current_tipster.avg_stake_ratio < 0.001 %>
+                        <td class="tipster-stat font-blue tb-left"><span class="tb-stat-sm">< 0.001</span></td>
+                        <% else %>
+												<td class="tipster-stat font-blue tb-left"><%= number_with_precision(current_tipster.avg_stake_ratio, precision: 3)%></td>
+                        <% end %>
+												<td class="uppercase tb-stat-sm">Average Bets</td>
+												<td class="tipster-stat font-blue tb-left"><%= current_tipster.avg_bets_placed %>/W</td>
+											</tr>
+											<tr>
+												<td class="uppercase tb-stat-sm">Profit Factor</td>
+												<td class="tipster-stat font-blue tb-left">5.44</td>
+												<td class="uppercase tb-stat-sm">Current Open Bets</td>
+												<td class="tipster-stat font-blue tb-left"><%= current_tipster.open_bets %></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<!-- END PORTLET 2-->
+					</div>

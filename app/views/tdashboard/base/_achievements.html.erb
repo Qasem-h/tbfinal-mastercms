@@ -1,0 +1,27 @@
+  	    		<div class="row">
+  					<div class="col-md-12">
+  						<!-- BEGIN ACHIEVEMENTS -->
+  						<div class="portlet light bordered">
+  							<div class="portlet-title">
+  								<div class="caption caption-md font-blue-madison">
+  									<i class="icon-bar-chart theme-font hide"></i>
+  									<span class="caption-subject theme-font bold uppercase">Achievements</span>
+  									<span class="caption-helper hide"></span>
+  								</div>
+  								<div class="tools pull-right">
+  									<a href="javascript:;" class="collapse" data-original-title="" title="" style="margin-left: 25px;"></a>
+  								</div>
+  							</div>
+  							<div class="portlet-body">
+  								<div class="achievements tb-center">
+                    <% current_tipster.badges.each do |badge| %>
+                      <% unless badge.custom_fields.nil? %>
+                        <%= image_tag(badge.custom_fields[:image], class: "img-responsive", alt: "3 In a Row") %>
+                        <% end %>
+                        <% end %>
+  								</div>
+  							</div>
+  						</div>
+  						<!-- END ACHIEVEMENTS-->
+  					</div>
+  				</div>

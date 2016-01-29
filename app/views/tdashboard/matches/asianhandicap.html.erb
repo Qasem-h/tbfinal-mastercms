@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="portlet box green">
+      <div class="portlet-title">
+        <div class="caption">Asian Handicap</div>
+      </div>
+      <div class="portlet-body">
+        <table class="table table-bordered table-striped table-condensed table-equal">
+    			<div class="row"> 
+      			<thead> 
+      				<tr>
+      			  		<th class="table-center" colspan='6'>
+      			  		<%= @match.hometeam %>
+                </th>
+      			  		<th class="table-center" colspan='6'>
+      			  		<%= @match.awayteam%>
+                </th>
+              </tr>
+            </thead>
+    				<tbody>
+    					<tr class="table-center">
+                <% if @handicap_team.team == "1" %>
+    						<td colspan="6">
+    							<%= @handicap_team.name %> | <%= @handicap_team.value %>
+                </td>
+    						<td colspan="6">
+    							 <%= @handicap.bookmaker.handicaps.find_by(id: @handicap_team.id + 1).name %> | <%= @handicap.bookmaker.handicaps.find_by(id: @handicap_team.id + 1).value %>
+                </td>
+                <% else %>
+    						<td colspan="6">
+    							<%= @handicap.bookmaker.handicaps.find_by(id: @handicap_team.id - 1).name %> | <%= @handicap.bookmaker.handicaps.find_by(id: @handicap_team.id - 1).value %>
+                </td>
+    						<td colspan="6">
+    							<%= @handicap_team.name %> | <%= @handicap_team.value %>
+                </td>
+                <% end %>
+               </tr>
+             </tbody>
+          </div>
+        </table>
+      </div>
+      
+    </div>
+    
+  </div>
+
+</div>
+</div>

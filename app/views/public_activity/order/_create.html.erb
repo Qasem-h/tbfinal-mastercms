@@ -1,0 +1,22 @@
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-sm label-success">
+																	<i class="fa fa-ticket"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc">
+																	 You have submitted <span class="label label-sm label-success">
+																	 Betslip ID: <%= activity.trackable.id %></span> with a stake of <%= activity.trackable.stake %>.
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date">
+															<%= distance_of_time_in_words(Time.now, activity.trackable.created_at)  %>
+														</div>
+													</div>
+												</li>

@@ -1,0 +1,8 @@
+%li
+  %a{:href => "javascript:;"}
+    %span.time= distance_of_time_in_words(Time.now, activity.trackable.created_at)
+    %span.details
+      %span.label.label-sm.label-icon.label-danger
+        %i.fa.fa-bolt
+      = activity.trackable.email
+      has follow you!

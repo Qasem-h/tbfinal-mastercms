@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="portlet box green">
+      <div class="portlet-title">
+        <div class="caption">Goal Line (2nd Half)</div>
+      </div>
+      <div class="portlet-body">
+        <table class="table table-bordered table-striped table-condensed table-equal">
+    			<div class="row"> 
+      			<thead> 
+      				<tr>
+      			  		<th class="table-center" colspan='6'>
+      			  		Goal Line
+                </th>
+      			  		<th class="table-center" colspan='6'>
+      			  		Over
+                </th>
+      			  		<th class="table-center" colspan='6'>
+      			  		Under
+                </th>
+              </tr>
+            </thead>
+    				<tbody>
+    					<tr class="table-center">
+    						<td colspan="6">
+    							<%= sprintf('%.2f', @match.odds.overunder_second.first.total) %>
+                </td>
+    						<td colspan="6">
+    							<%= link_to(tdashboard_picks_path(match_id: @match.id, odds: @match.odds.overunder_second.first.over, bettype: "Goal Line Second Half", bet:  "Over", total: @match.odds.overunder_second.first.total), method: :post, remote: true) do %>
+                   <%= sprintf('%.2f', @match.odds.overunder_second.first.over) %>
+                   <% end %>
+                </td>
+    						<td colspan="6">
+    							<%= link_to(tdashboard_picks_path(match_id: @match.id, odds: @match.odds.overunder_second.first.under, bettype: "Goal Line Second Half", bet:  "Under", total: @match.odds.overunder_second.first.total), method: :post, remote: true) do %>
+                   <%= sprintf('%.2f', @match.odds.overunder_second.first.under) %>
+                   <% end %>
+                </td>
+               </tr>
+             </tbody>
+          </div>
+        </table>
+      </div>
+      
+    </div>
+    
+    
+  </div>
+  <div class="col-md-6">
+    <div class="portlet box green">
+      <div class="portlet-title">
+        <div class="caption">Alternative Goal Line</div>
+				<div class="tools">
+					<a href="javascript:;" class="expand">
+					</a>
+        </div>
+      </div>
+      <div class="portlet-body display-hide">
+        <table class="table table-bordered table-striped table-condensed table-equal">
+    			<div class="row"> 
+      			<thead> 
+      				<tr>
+      			  		<th class="table-center" colspan='6'>
+      			  		Goal Line
+                </th>
+      			  		<th class="table-center" colspan='6'>
+      			  		Over
+                </th>
+      			  		<th class="table-center" colspan='6'>
+      			  		Under
+                </th>
+              </tr>
+            </thead>
+    				<tbody>
+              <% @match.odds.overunder_first.order("total ASC").each do |odds| %>
+    					<tr class="table-center">
+                
+    						<td colspan="6">
+    							<%= sprintf('%.2f', odds.total) %>
+                </td>
+    						<td colspan="6">
+    							<%= link_to(tdashboard_picks_path(match_id: @match.id, odds: odds.over, bettype: "Goal Line Second Half", bet: "Over", total: odds.total), method: :post, remote: true) do %>
+                   <%= sprintf('%.2f', odds.over) %>
+                   <% end %>
+                </td>
+    						<td colspan="6">
+    							<%= link_to(tdashboard_picks_path(match_id: @match.id, odds: odds.under, bettype: "Goal Line Second Half", bet: "Under", total: odds.total), method: :post, remote: true) do %>
+                   <%= sprintf('%.2f', odds.under) %>
+                   <% end %>
+                </td>
+               
+               </tr>
+                <% end %>
+             </tbody>
+          </div>
+        </table>
+      </div>
+  </div>
+</div>
+</div>

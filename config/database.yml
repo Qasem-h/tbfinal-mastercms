@@ -1,0 +1,24 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: tbmodels_devcms
+  pool: 5
+  username: Stellally
+  password:
+    
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: tbmodels_testcms
+  pool: 5
+  username: Stellally
+  password:
+    
+production:
+  host: localhost
+  adapter: postgresql
+  database: tbmodels_production
+  pool: 5
+  timeout: 5000
+  username: <%= ENV['TB_DATABASE_USER'] %>
+  password: <%= ENV['TB_DATABASE_PASSWORD'] %>

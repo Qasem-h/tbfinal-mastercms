@@ -1,0 +1,168 @@
+//= require css/bootstrap.min.css
+//= require css/uniform.default.css
+//= require css/bootstrap-switch.min.css
+//= require_tree .././admin4/
+
+/* Betslip Styles */
+
+.betslip-label {
+	color: #5E5E5E;
+	margin-left: -30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #fff;
+	overflow: hidden;
+}
+
+.betslip-margin {
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+.betslip-match {
+	margin: 5px 0px;
+	font-size: 12px;
+}
+
+.betslip-header,
+.betslip-alert,
+.table-center,
+.stat-label {
+	text-align: center;
+}
+
+.betslip-header {
+	color: #5E5E5E;
+	padding-top: 50px;
+}
+
+.betslip-alert {
+	font-style: italic;
+}
+
+.simple_form div.input{
+  margin-bottom: 10px;
+  clear: both; /* Required for Webkit, but not for Gecko */
+}
+
+/* here you can put your own css to customize and override the theme */
+
+/***
+Rounded Portlets
+***/
+/*
+.portlet {
+	border-radius: 4px !important;
+}
+
+.portlet .portlet-title {
+	border-radius: 4px 4px 0px 0px !important;
+}
+
+.portlet .portlet-body,
+.portlet .portlet-body .form-actions  {
+	border-radius: 0px 0px 4px 4px !important;
+}
+*/
+.tipster-portlet {
+/*	padding-top: 10px;
+	padding-bottom: 10px;*/
+	min-height: 30px !important;
+}
+
+.tipster-caption {
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+}
+
+.tipster-name h3 {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.tb-margin {
+	margin: auto;
+	float: none;
+}
+
+.tb-center {
+	text-align: center;
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 70%;
+  height: 70%;
+/*  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;*/
+}
+
+
+.tipster-stat, 
+.tipster-stat-big {
+	font-family: 'Roboto Condensed', san-serif;
+	font-weight: 300;
+	font-size: 1.5em;
+	color: #4B77BE;
+	text-align: center;
+}
+
+.tipster-stat-big {
+	font-size: 1.8em;
+}
+
+.achievements img {
+	display: inline-block;
+	width: 12%;
+	height: 12%;
+}
+
+.wdl-win,
+.wdl-draw,
+.wdl-lose {
+	float: none;
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	-webkit-border-radius: 50% !important;
+	-moz-border-radius: 50% !important;
+	border-radius: 50% !important;
+}
+
+.wdl-win {
+	background-color: #3598dc;
+}
+
+.wdl-draw{
+	background-color: #F4D03F;
+}
+
+.wdl-lose {
+	background-color: #e35b5a;
+}
+
+.tipster-follow-btn {
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 15px;
+}
+
+/* MEDIA QUERY */
+@media (min-width: 768px) {
+	.tb-portlet-width {
+		min-width: 718px;
+		max-width: 780px;
+	}
+  }
+
+@media (max-width: 767px) {
+	.tipster-stat {
+		font-size: 1.3em;
+	}
+
+	.tb-hide {
+		display: none;
+	}
+}

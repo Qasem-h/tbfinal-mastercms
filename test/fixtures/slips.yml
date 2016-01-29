@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stake: 1
+  winnings: 9.99
+  possible_winnings: 9.99
+  status: MyString
+  tipster_id: 
+  account_id: 
+
+two:
+  stake: 1
+  winnings: 9.99
+  possible_winnings: 9.99
+  status: MyString
+  tipster_id: 
+  account_id: 

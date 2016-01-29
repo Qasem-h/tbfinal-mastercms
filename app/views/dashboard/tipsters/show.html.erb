@@ -1,0 +1,432 @@
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<!-- BEGIN PAGE HEADER-->
+			<!-- BEGIN PAGE HEAD -->
+			<div class="page-head">
+				<!-- BEGIN PAGE TITLE -->
+				<div class="page-title">
+					<h1>#TIPSTER'S Profile</h1>
+				</div>
+				<!-- END PAGE TITLE -->
+			</div>
+			<!-- END PAGE HEAD -->
+			<!-- BEGIN PAGE BREADCRUMB -->
+			<ul class="page-breadcrumb breadcrumb">
+				<li>
+					<a href="index.html">Home</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="#">Page Layouts</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="#">Blank Page</a>
+				</li>
+			</ul>
+			<!-- END PAGE BREADCRUMB -->
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<!-- BEGIN PROFILE SIDEBAR -->
+					<div class="profile-sidebar" style="width: 250px;">
+						<!-- PORTLET MAIN -->
+						<div class="portlet light profile-sidebar-portlet">
+							<!-- SIDEBAR USERPIC -->
+							<div class="profile-userpic tb-hide">
+								<%= image_tag gravatar_for(@tipster.email), class: "img-responsive" %>
+							</div>
+							<!-- END SIDEBAR USERPIC -->
+							<!-- SIDEBAR USER TITLE -->
+							<div class="profile-usertitle">
+								<div class="profile-usertitle-name">
+									 <%= @tipster.username %>
+								</div>
+								<div class="profile-usertitle-name font-red">
+									 Rank #<%= rank_for(@tipster.id) %>
+								</div>
+								<div class="row tb-center wdl">
+                  <% @tipster.form.each do |t| %>
+                    <% if t == "Win" %>
+									<div class="wdl-win"></div>
+                    <% elsif t == "Draw" %>
+                  <div class="wdl-draw"></div>
+                    <% else %>
+                  <div class="wdl-lose"></div>
+                    <% end %>
+                  <% end %>
+								</div>
+							</div>
+							<!-- END SIDEBAR USER TITLE -->
+							<!-- SIDEBAR BUTTONS -->
+							<div class="row tb-center">
+								<div class="tb-center">
+									<button class="btn green btn-block tipster-follow-btn tb-center">View History</button>
+								</div>
+							</div>
+							<div class="row tb-center margin-bottom-20">
+								<div class="tb-center">
+                  <% if @tipster.followed_by?(current_user) %>
+                    <%= link_to 'Unfollow', unfollow_dashboard_tipster_path(@tipster), class: 'btn red btn-block tipster-follow-btn tb-center' %>
+                  <% else %>
+                    <%= link_to 'Follow', follow_dashboard_tipster_path(@tipster), class: 'btn blue btn-block tipster-follow-btn tb-center' %>
+									<% end %>
+								</div>
+							</div>
+							<!-- END SIDEBAR BUTTONS -->
+							<div class="tb-profile-sidebar">
+								<h4 class="profile-desc-title">Strategy</h4>
+								<span class="profile-desc-text"> But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure? </span>
+							</div>
+						</div>
+						<!-- END PORTLET MAIN -->
+						
+					</div>
+					<!-- END BEGIN PROFILE SIDEBAR -->
+					<!-- BEGIN PROFILE CONTENT -->
+					<div class="profile-content">
+						<div class="row">
+			    			<div class="col-md-6">
+								<!-- BEGIN PORTLET 1-->
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption caption-md font-blue-madison">
+											<i class="icon-bar-chart theme-font hide"></i>
+											<span class="caption-subject theme-font bold uppercase">Stats Summary</span>
+											<span class="caption-helper hide"></span>
+										</div>
+										<div class="tools">
+											<a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+										</div>
+									</div>
+									<div class="portlet-body">
+										<div class="table-scrollable table-scrollable-borderless">
+											<table class="table table-hover table-light">
+												<tbody>
+													<tr>
+														<td class="uppercase tb-stat-sm">Balance</td>
+														<td class="tipster-stat font-blue tb-left" colspan="3"><%= number_to_currency(@tipster.accounts.last.balance) %></td>
+													</tr>
+													<tr>
+														<td class="uppercase tb-stat-sm">Win (%)</td>
+														<td class="tipster-stat font-blue tb-left">
+                            <% if @tipster.win_rate.eql?("--") %>
+                               0.00%
+                            <% else %>
+                           	  <%= number_to_percentage((@tipster.win_rate) * 100, precision: 2) %>
+                            <% end %>
+                            </td>
+														<td class="uppercase tb-stat-sm">Growth</td>
+														<td class="tipster-stat font-blue tb-left"> <%= number_to_percentage((@tipster.growth) * 100, precision: 2) %></td>
+													</tr>
+													<tr>
+														<td class="uppercase tb-stat-sm">Followers</td>
+														<td class="tipster-stat font-blue tb-left"><%= @tipster.followers_count %></td>
+														<td class="uppercase tb-stat-sm">Total Bets</td>
+														<td class="tipster-stat font-blue tb-left"><%= @tipster.total_bets %></td>
+													</tr>
+													<tr>
+														<td class="uppercase tb-stat-sm">Profit Factor</td>
+														<td class="tipster-stat font-blue tb-left">5.44</td>
+														<td class="uppercase tb-stat-sm">Age</td>
+														<td class="tipster-stat font-blue tb-left"><%= (@tipster.age.to_i / 7).floor %>W</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+								<!-- END PORTLET 1-->
+							</div>
+							<div class="col-md-6">
+								<!-- BEGIN PORTLET 2-->
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption caption-md font-blue-madison">
+											<i class="icon-bar-chart theme-font hide"></i>
+											<span class="caption-subject theme-font bold uppercase">In-Depth Stats</span>
+											<span class="caption-helper hide"></span>
+										</div>
+										<div class="tools">
+											<a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+										</div>
+									</div>
+									<div class="portlet-body">
+										<div class="table-scrollable table-scrollable-borderless">
+											<table class="table table-hover table-light">
+												<tbody>
+													<tr>
+    												<td class="uppercase tb-stat-sm"> 
+                              <% if @tipster.winning.value > 0 %>
+                              Current Winning Streak:
+                            </td>
+                            <td class="tipster-stat font-blue tb-left">
+                              <%= @tipster.winning.value %>
+                              <% elsif @tipster.losing.value > 0 %>
+                              Current Losing Streak:
+                            </td>
+                            <td class="tipster-stat font-blue tb-left">
+                              <%= @tipster.losing.value %>
+                              <% else %>
+                              Current Winning Streak:
+                            </td> 
+                            <td class="tipster-stat font-blue tb-left">
+                                0
+                              <% end %>
+                            </td>
+														<td class="uppercase tb-stat-sm">Max Open Bets</td>
+														<td class="tipster-stat font-blue tb-left"><%= @tipster.openbets %> <span class="tb-stat-sm">(<%= number_to_currency(@tipster.maxopenstakes) %>)</span></td>
+													</tr>
+													<tr>
+														<td class="uppercase tb-stat-sm">Max Winning Streaks</td>
+														<td class="tipster-stat font-blue tb-left"><%= @tipster.winning_streak.value %></td>
+												<td class="uppercase tb-stat-sm">Max Losing Streaks</td>
+												<td class="tipster-stat font-blue tb-left"><%= @tipster.losing_streak.value %></td>
+													</tr>
+													<tr>
+														<td class="uppercase tb-stat-sm">Stake Ratio</td>
+                            <% if @tipster.avg_stake_ratio < 0.001 %>
+                            <td class="tipster-stat font-blue tb-left"><span class="tb-stat-sm">< 0.001</span></td>
+                            <% else %>
+    												<td class="tipster-stat font-blue tb-left"><%= number_with_precision(@tipster.avg_stake_ratio, precision: 3)%></td>
+                            <% end %>
+														<td class="uppercase tb-stat-sm">Average Bets</td>
+														<td class="tipster-stat font-blue tb-left"><%= @tipster.avg_bets_placed %>/W</td>
+													</tr>
+													<tr>
+														<td class="uppercase tb-stat-sm">Profit Factor</td>
+														<td class="tipster-stat font-blue tb-left">5.44</td>
+														<td class="uppercase tb-stat-sm">Open Bets</td>
+														<td class="tipster-stat font-blue tb-left"><%= @tipster.open_bets %></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+								<!-- END PORTLET 2-->
+							</div>
+			    		</div>
+						<div class="row">
+			    			<div class="col-md-6">
+								<!-- BEGIN TREND-->
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption caption-md font-blue-madison">
+											<i class="icon-bar-chart theme-font hide"></i>
+											<span class="caption-subject theme-font bold uppercase">Account Balance</span>
+											<span class="caption-helper hide">Trend</span>
+										</div>
+										<div class="tools pull-right">
+											<a href="javascript:;" class="collapse" data-original-title="" title="" style="margin-left: 25px;"></a>
+										</div>
+										<div class="actions">
+											<div class="btn-group btn-group-devided" data-toggle="buttons">
+												<label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
+												<input type="radio" name="options" class="toggle" id="option1">Today</label>
+												<label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+												<input type="radio" name="options" class="toggle" id="option2">Week</label>
+												<label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+												<input type="radio" name="options" class="toggle" id="option2">Month</label>
+												<label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+												<input type="radio" name="options" class="toggle" id="option2">Year</label>
+											</div>
+										</div>
+									</div>
+									<div class="portlet-body">
+										<div class="row list-separated">
+											<div class="col-md-3 col-sm-3 col-xs-6">
+												<div class="font-grey-mint font-sm">
+													 Total Sales
+												</div>
+												<div class="uppercase font-hg font-red-flamingo">
+													 13,760 <span class="font-lg font-grey-mint">$</span>
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-3 col-xs-6">
+												<div class="font-grey-mint font-sm">
+													 Revenue
+												</div>
+												<div class="uppercase font-hg theme-font">
+													 4,760 <span class="font-lg font-grey-mint">$</span>
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-3 col-xs-6">
+												<div class="font-grey-mint font-sm">
+													 Expenses
+												</div>
+												<div class="uppercase font-hg font-purple">
+													 11,760 <span class="font-lg font-grey-mint">$</span>
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-3 col-xs-6">
+												<div class="font-grey-mint font-sm">
+													 Growth
+												</div>
+												<div class="uppercase font-hg font-blue-sharp">
+													 9,760 <span class="font-lg font-grey-mint">$</span>
+												</div>
+											</div>
+										</div>
+										<ul class="list-separated list-inline-xs hide">
+											<li>
+												<div class="font-grey-mint font-sm">
+													 Total Sales
+												</div>
+												<div class="uppercase font-hg font-red-flamingo">
+													 13,760 <span class="font-lg font-grey-mint">$</span>
+												</div>
+											</li>
+											<li>
+											</li>
+											<li class="border">
+												<div class="font-grey-mint font-sm">
+													 Revenue
+												</div>
+												<div class="uppercase font-hg theme-font">
+													 4,760 <span class="font-lg font-grey-mint">$</span>
+												</div>
+											</li>
+											<li class="divider">
+											</li>
+											<li>
+												<div class="font-grey-mint font-sm">
+													 Expenses
+												</div>
+												<div class="uppercase font-hg font-purple">
+													 11,760 <span class="font-lg font-grey-mint">$</span>
+												</div>
+											</li>
+											<li class="divider">
+											</li>
+											<li>
+												<div class="font-grey-mint font-sm">
+													 Growth
+												</div>
+												<div class="uppercase font-hg font-blue-sharp">
+													 9,760 <span class="font-lg font-grey-mint">$</span>
+												</div>
+											</li>
+										</ul>
+										<div id="sales_statistics" class="portlet-body-morris-fit morris-chart" style="height: 272px">
+										</div>
+									</div>
+								</div>
+								<!-- END TREND-->
+							</div>
+							<div class="col-md-6">
+								<!-- BEGIN ACHIEVEMENTS -->
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption caption-md font-blue-madison">
+											<i class="icon-bar-chart theme-font hide"></i>
+											<span class="caption-subject theme-font bold uppercase">Achievements</span>
+											<span class="caption-helper hide"></span>
+										</div>
+										<div class="tools pull-right">
+											<a href="javascript:;" class="collapse" data-original-title="" title="" style="margin-left: 25px;"></a>
+										</div>
+									</div>
+									<div class="portlet-body">
+										<div class="achievements tb-center">
+											<img src="../../assets/admin/pages/media/achievements/R20.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/R30.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/R40.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/R50.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/R60.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/R70.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/WR01.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/WR02.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/WR03.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/WR04.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/WR05.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/WR06.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/WS03.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/WS05.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/WS07.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/WS10.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/WS15.png" class="img-responsive" alt="">
+											<img src="../../assets/admin/pages/media/achievements/WS20.png" class="img-responsive" alt="">
+										</div>
+									</div>
+								</div>
+								<!-- END ACHIEVEMENTS-->
+							</div>
+			    		</div>
+			    		<div class="row">
+							<div class="col-md-6">
+			    				<!-- BEGIN BAR CHART-->
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption font-blue-madison">
+											<span class="caption-subject bold uppercase">Winnings</span>
+											<span class="caption-helper">and Stakes</span>
+										</div>
+										<div class="tools pull-right">
+											<a href="javascript:;" class="collapse" data-original-title="" title="" style="margin-left: 25px;"></a>
+										</div>
+										<div class="actions">
+											<a class="btn btn-circle btn-icon-only btn-default fullscreen" href="#">
+											</a>
+										</div>
+									</div>
+									<div class="portlet-body">
+		    							<div id="columnLine" class="columnLine"></div>
+									</div>
+								</div>
+								<!-- END BAR CHART-->
+			    			</div>
+							<div class="col-md-6">
+			    				<!-- BEGIN FAVOURITE LEAGUES-->
+								<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption">
+											<span class="caption-subject bold uppercase font-blue-madison">Favourite Leagues</span>
+											<span class="caption-helper hide"></span>
+										</div>
+										<div class="tools pull-right">
+											<a href="javascript:;" class="collapse" data-original-title="" title="" style="margin-left: 25px;"></a>
+										</div>
+										<div class="actions">
+											<a class="btn btn-circle btn-icon-only btn-default fullscreen" href="#">
+											</a>
+										</div>
+									</div>
+									<div class="portlet-body">
+		    							<div id="animated-pie-chart" class="animated-pie-chart"></div>
+									</div>
+								</div>
+								<!-- END FAVOURITE LEAGUES-->
+			    			</div>	
+						</div>
+					</div>
+					<!-- END PROFILE CONTENT -->
+				<!-- END PAGE CONTENT-->
+				</div>
+			</div>
+	<!-- END CONTENT -->
+</div>
+</div>

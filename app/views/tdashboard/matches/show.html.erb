@@ -1,0 +1,32 @@
+<% breadcrumb :issue, @match %>
+<div class="page-head">
+
+<!-- Full Time results -->  
+<%= render "ftresult" %>
+
+<% unless @match.odds.htresult.first.nil? %>
+<!-- Half Time results -->
+<%= render "htresult" %>
+<% end %>
+<!-- Home/Away -->
+<% unless @match.odds.homeaway.first.nil? %>
+<%= render "homeaway" %>
+<% end %>
+<!-- Goal Line -->
+<% unless @match.odds.overunder.first.nil? %>
+<%= render "goalline" %>
+<% end %>
+<!-- Goal Line 1st Half -->
+<% unless @match.odds.overunder_first.first.nil? %>
+<%= render "goalline_fh"%>
+<% end %>
+<!-- Goal Line 2nd Half -->
+<% unless @match.odds.overunder_second.first.nil? %>
+<%= render "goalline_sh" %>
+<% end %>
+<!-- Asian Handicap -->
+<% unless @match.odds.handicap.first.nil? %>
+<%= render "handicap" %>
+<% end %>
+</div>
+</div>

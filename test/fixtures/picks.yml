@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  matchid: MyString
+  odds: 9.99
+  status: MyString
+  team: MyString
+  pickstatus: MyString
+  bettype: MyString
+  bet: MyString
+  match_id: 
+  order_id: 
+  slip_id: 
+  tipster_id: 
+
+two:
+  matchid: MyString
+  odds: 9.99
+  status: MyString
+  team: MyString
+  pickstatus: MyString
+  bettype: MyString
+  bet: MyString
+  match_id: 
+  order_id: 
+  slip_id: 
+  tipster_id: 

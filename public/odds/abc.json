@@ -1,0 +1,43 @@
+[{"hometeam" : "Brunei",
+      "awayteam": "Singapore",
+      "date": "2011-08-23 23:27:51",
+      "static_id": "321421412312312",
+      "alternate_id": "13513551",
+      "league": "England: Premier League",
+      "odds" : [{"odds_type_id": 1,
+                "homewin":"1.33",
+                "draw":"3.44",
+                 "awaywin":"4.43"},
+                 {"odds_type_id": 2,
+                   "homewin": "1.33",
+                   "awaywin": "5.55"},
+                   {"odds_type_id": 3,
+                     "total": "2.5",
+                     "over": "1.33",
+                     "under": "3.50"},
+                     {"odds_type_id": 4,
+                       "homevalue": "-2",
+                       "awayvalue": "+2",
+                       "homewin":"1.55",
+                       "awaywin": "3.99"},
+                       {"odds_type_id": 5,
+                         "homewin": "1.50",
+                         "awaywin": "3.60",
+                         "draw": "3.00"},
+                         {"odds_type_id": 6,
+                           "total": "2.5",
+                           "over": "2.70",
+                           "under": "1.33"},
+                           {"odds_type_id":7,
+                             "homewin": "2.03",
+                             "awaywin": "2.35"},
+                             {"odds_type_id": 8,
+                               "total": "2.0",
+                               "over": "2.90",
+                               "under": "1.85"}
+                ]
+               }
+   
+]
+  
+  

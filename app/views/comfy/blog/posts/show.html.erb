@@ -1,0 +1,50 @@
+<h1>Blog Post</h1>
+
+<hr>
+
+<h1>
+  <%= @post.title %>
+</h1>
+<div class="author">
+  <%= @post.author %>
+</div>
+<div class="date">
+  <%= @post.published_at.to_s(:db) %>
+</div>
+<div class="content">
+  <%= @post.content.html_safe %>
+</div>
+
+<p class="links">
+  <%= link_to "Back to blog",comfy_blog_posts_path(@cms_site.path, @blog.path) %>
+</p>
+
+<hr>
+<h2>Like this article? Share it!</h2>
+
+<%= render_shareable :buttons=> ['facebook', 'twitter', 'tumblr', 'google_plus'] %>
+  
+      
+<hr>
+  
+<h2>Comments</h2>
+
+  <% @post.comments.published.each do |comment| %>
+    <div class="comment">
+      <div class="content">
+        <%= comment.content %>
+      </div>
+	  <div class="author">
+        <h4>By:</h4><%= comment.author %>
+      </div>
+    </div>
+  <% end %>
+
+<hr>
+
+<h2>Leave Your Comment</h2>  
+  <%= render :partial => 'comfy/blog/comments/form' %>
+</div>
+
+
+

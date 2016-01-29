@@ -1,0 +1,101 @@
+	<div class="page-sidebar-wrapper">
+		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+		<div class="page-sidebar navbar-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU -->
+			<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+			<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+			<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+			<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+				<li class="start ">
+          <%= link_to tdashboard_path do %>
+					  <i class="icon-home"></i>
+					  <span class="title">My Dashboard</span>
+          <% end %>
+				</li>
+				<li class="start ">
+          <%= link_to tdashboard_todaygame_path do %>
+					  <i class="icon-home"></i>
+					  <span class="title">Today's Games</span>
+          <% end %>
+				</li>
+				<li>
+					<a href="javascript:;">
+					<i class="icon-basket"></i>
+					<span class="title">Feature Game</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+               <%= link_to tdashboard_league_matches_path(79) do %>
+               <i class="icon-home"></i>
+               English Premier League
+               <% end %>
+						</li>
+						<li>
+               <%= link_to tdashboard_league_matches_path(113) do %>
+               <i class="icon-home"></i>
+               German Bundesliga
+               <% end %>
+						</li>
+						<li>
+               <%= link_to tdashboard_league_matches_path(103) do %>
+               <i class="icon-home"></i>
+               France Ligue 1
+               <% end %>
+						</li>
+						<li>
+              <%= link_to tdashboard_league_matches_path(160) do %>
+              <i class="icon-home"></i>
+              Italy Serie A
+              <% end %>
+						</li>
+						<li>
+              <%= link_to tdashboard_league_matches_path(248) do %>
+              <i class="icon-tag"></i>
+              Spain Primera Liga
+              <% end %>
+						</li>
+						<li>
+              <%= link_to tdashboard_league_matches_path(94) do %>
+              <i class="icon-handbag"></i>
+              Europe League
+              <% end %>
+						</li>
+						<li>
+              <%= link_to tdashboard_league_matches_path(95) do %>
+              <i class="icon-pencil"></i>
+              Euro Cup
+              <% end %>
+						</li>
+					</ul>
+				</li>
+        <!-- Loop Countries/Leagues -->
+        <% Country.all.each do |t| %>
+				<li>
+					<a href="javascript:;">
+					<i class="icon-rocket"></i>
+					<span class="title"><%= t.name.titleize %></span>
+					<span class="arrow "></span>
+					</a>
+            <ul class="sub-menu">
+            <% t.leagues.each do |league| %>
+            <% next if league.matches.havent_start.count == 0 %>
+    				<li>
+                <%= link_to league.name, tdashboard_league_matches_path(league.id) %>
+    				</li>
+            <% end %>
+          </ul>
+        </li>
+        
+        <% end %>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<!-- END SIDEBAR MENU -->
+		</div>
+	</div>

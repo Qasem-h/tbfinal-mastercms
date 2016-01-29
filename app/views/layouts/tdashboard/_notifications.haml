@@ -1,0 +1,22 @@
+%li#header_notification_bar.dropdown.dropdown-extended.dropdown-notification.dropdown-dark
+  %a.dropdown-toggle{"data-close-others" => "true", "data-toggle" => "dropdown", :href => "javascript:;"}
+    %i.icon-bell
+    %span.badge.badge-success.notif-num= current_tipster.unviewed_notifications.count
+  %ul.dropdown-menu
+    %li.external
+      %h3
+        %span.bold
+          = current_tipster.unviewed_notifications.count
+          pending
+        notifications
+      %a{:href => "extra_profile.html"} view all
+    %li
+      %ul.dropdown-menu-list.scroller{"data-handle-color" => "#637283", :style => "height: 250px;"}
+        - if current_tipster.notifications.any?
+          - current_tipster.latest_notifications.each do |activity|
+            %li
+              = render_custom_activity activity 
+        - else
+          %li
+            = link_to '#' do
+              No new notifications.

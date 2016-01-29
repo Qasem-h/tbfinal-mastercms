@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  ht_home_goal: 1
+  ht_away_goal: 1
+  ft_home_goal: 1
+  ft_away_goal: 1
+  et_home_goal: 1
+  et_away_goal: 1
+  penalty_home: 1
+  penalty_away: 1
+  first_goal: MyString
+  last_goal: MyString
+
+two:
+  status: MyString
+  ht_home_goal: 1
+  ht_away_goal: 1
+  ft_home_goal: 1
+  ft_away_goal: 1
+  et_home_goal: 1
+  et_away_goal: 1
+  penalty_home: 1
+  penalty_away: 1
+  first_goal: MyString
+  last_goal: MyString

@@ -1,0 +1,104 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="portlet box green">
+      <div class="portlet-title">
+        <div class="caption">Asian Handicap</div>
+      </div>
+      <div class="portlet-body">
+        <table class="table table-bordered table-striped table-condensed table-equal">
+    			<div class="row"> 
+      			<thead> 
+      				<tr>
+      			  		<th class="table-center" colspan='6'>
+      			  		<%= @match.home_team %>
+                </th>
+      			  		<th class="table-center" colspan='6'>
+      			  		<%= @match.away_team %>
+                </th>
+              </tr>
+            </thead>
+            <% if @match.odds.closest_two_handicap.nil? %>
+    				<tbody>
+    					<tr class="table-center">
+    						<td colspan="6">
+    							<%= @match.odds.handicap.first.homevalue %> | <%= link_to(tdashboard_picks_path(match_id: @match.id, odds: @match.odds.handicap.first.homewin, bettype: "Handicap", bet: "1", total: @match.odds.handicap.first.homevalue), method: :post, remote: true) do %>
+                  <%= sprintf('%.2f', @match.odds.handicap.first.homewin) %>
+                   <% end %>
+                </td>
+    						<td colspan="6">
+			      							<%= @match.odds.handicap.first.awayvalue %> | <%= link_to(tdashboard_picks_path(match_id: @match.id, odds: @match.odds.handicap.first.awaywin, bettype: "Handicap", bet: "2", total: @match.odds.handicap.first.awayvalue), method: :post, remote: true) do %>
+			                    <%= sprintf('%.2f', @match.odds.handicap.first.awaywin) %>
+                   <% end %>
+                </td>
+               </tr>
+             </tbody>
+            <% else %>
+    				<tbody>
+    					<tr class="table-center">
+    						<td colspan="6">
+    						<%= @match.odds.closest_two_handicap.homevalue %> |	<%= link_to(tdashboard_picks_path(match_id: @match.id, odds: @match.odds.closest_two_handicap.homewin, bettype: "Handicap", bet: "1", total: @match.odds.closest_two_handicap.homevalue), method: :post, remote: true) do %>
+                  <%= sprintf('%.2f', @match.odds.closest_two_handicap.homewin) %>
+                   <% end %>
+                </td>
+    						<td colspan="6">
+			      						<%= @match.odds.closest_two_handicap.awayvalue %> |	<%= link_to(tdashboard_picks_path(match_id: @match.id, odds: @match.odds.closest_two_handicap.awaywin, bettype: "Handicap", bet: "2", total: @match.odds.closest_two_handicap.awayvalue), method: :post, remote: true) do %>
+			                    <%= sprintf('%.2f', @match.odds.closest_two_handicap.awaywin) %>
+                   <% end %>
+                </td>
+               </tr>
+             </tbody>
+             <% end %>
+          </div>
+        </table>
+      </div>
+      
+    </div>
+    
+    
+  </div>
+  <div class="col-md-6">
+    <div class="portlet box green">
+      <div class="portlet-title">
+        <div class="caption">Alternative Handicap</div>
+				<div class="tools">
+					<a href="javascript:;" class="expand">
+					</a>
+        </div>
+      </div>
+      <div class="portlet-body display-hide">
+        <table class="table table-bordered table-striped table-condensed table-equal">
+    			<div class="row"> 
+      			<thead> 
+	        				<tr>
+	        			  		<th class="table-center" colspan='6'>
+	        			  		<%= @match.home_team %>
+	                  </th>
+	        			  		<th class="table-center" colspan='6'>
+	        			  		<%= @match.away_team %>
+	                  </th>
+	                </tr>
+            </thead>
+    				<tbody>
+              <% @match.odds.handicap.order("homewin ASC").each do |odds| %>
+    					<tr class="table-center">
+                
+    						<td colspan="6">
+    							<%= odds.homevalue %> | <%= link_to(tdashboard_picks_path(match_id: @match.id, odds: odds.homewin, bettype: "Handicap", bet: "1", total: odds.homevalue), method: :post, remote: true) do %>
+                   <%= sprintf('%.2f', odds.homewin) %>
+                   <% end %>
+                </td>
+    						<td colspan="6">
+			     							<%= odds.awayvalue %> | <%= link_to(tdashboard_picks_path(match_id: @match.id, odds: odds.awaywin, bettype: "Handicap", bet: "2", total: odds.awayvalue), method: :post, remote: true) do %>
+			                    <%= sprintf('%.2f', odds.awaywin) %>
+			                    <% end %>
+                </td>
+               
+               </tr>
+                <% end %>
+             </tbody>
+          </div>
+        </table>
+      </div>
+  </div>
+</div>
+</div>

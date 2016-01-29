@@ -1,0 +1,56 @@
+	<!-- BEGIN SIDEBAR -->
+	<div class="page-sidebar-wrapper">
+		<!-- END HEADER SEARCH BOX -->
+		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+		<div class="page-sidebar md-shadow-z-2-i  navbar-collapse collapse">
+		<!-- BEGIN HEADER SEARCH BOX -->
+		<!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
+		<form class="search-form tb-sidebar-search" action="extra_search.html" method="GET">
+			<div class="input-group ">
+				<input type="text" class="form-control input-sm" placeholder="Search..." name="query">
+				<span class="input-group-btn">
+				<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+				</span>
+				
+			</div>
+		</form>
+			<!-- BEGIN SIDEBAR MENU -->
+			<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+			<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+			<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+			<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+				<li class="start ">
+					<a href="index.html">
+            <%= link_to dashboard_mytipsters_path do %>
+					  <i class="fa fa-star-o"></i>
+					  <span class="title">My Tipsters</span>
+            <% end %>
+					</a>
+				</li>
+				<li class="start ">
+          <%= link_to dashboard_tipsters_path do %>
+				  <i class="fa fa-users"></i>
+				  <span class="title">All Tipsters</span>
+          <% end %>
+				</li>
+				<li class="start ">
+					<a href="index.html">
+					<i class="fa fa-bell"></i>
+					<span class="title">Feed</span>
+					</a>
+				</li>
+				<li class="start ">
+					<a href="index.html">
+					<i class="fa fa-history"></i>
+					<span class="title">Subscription History</span>
+					</a>
+				</li>
+			</ul>
+			<!-- END SIDEBAR MENU -->
+		</div>
+	</div>
+	<!-- END SIDEBAR -->

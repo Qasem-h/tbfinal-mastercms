@@ -1,0 +1,82 @@
+			<% breadcrumb :leagues, @league %>
+      <div class="row">
+				<div class="col-md-12">
+          <% if flash[:pick_errors] %>
+            <div class="note note-success note-shadow">
+              <% flash[:pick_errors].each do |msg| %>
+                  <p><%= msg %></p>
+                <% end %>
+                </div>
+                <% end %>
+                
+            <% if flash[:notice] %>
+					<div class="note note-success note-shadow">
+						<p>
+							 <%= notice %>
+						</p>
+					</div>
+          <% end %>
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-cogs"></i><%= @league.name %>
+							</div>
+							<div class="tools">
+								<a href="javascript:;" class="collapse">
+								</a>
+								<a href="#portlet-config" data-toggle="modal" class="config">
+								</a>
+								<a href="javascript:;" class="reload">
+								</a>
+								<a href="javascript:;" class="remove">
+								</a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-responsive">
+								<table class="table table-bordered">
+								<thead>
+								<tr>
+									<th>
+										 Date & Time
+									</th>
+									<th>
+										 Match
+									</th>
+									<th>
+										 1
+									</th>
+									<th>
+										 X
+									</th>
+									<th>
+										 2
+									</th>
+									<th>
+										 View More
+									</th>
+								</tr>
+								</thead>
+								<tbody>
+                  <% @matches.each do |match| %>
+                  <% unless match.odds.ftresult.first.nil? %>
+								<tr>
+                    <td><%= match.date %></td>
+                    <td><%= match.home_team %> vs <%= match.away_team %></td>
+                    <td><%= link_to number_with_precision(match.odds.ftresult.last.homewin, precision: 2), tdashboard_picks_path(match_id: match.id, odds: match.odds.ftresult.last.homewin, team: match.home_team, bettype: "1x2", bet: "1"), method: :post, remote: true %></td>
+                    <td><%= link_to number_with_precision(match.odds.ftresult.last.draw,precision: 2), tdashboard_picks_path(match_id: match.id, odds: match.odds.ftresult.last.draw, team: "Draw", bettype: "1x2", bet: "Draw"), method: :post, remote: true %></td>
+                    <td><%= link_to number_with_precision(match.odds.ftresult.last.awaywin, precision: 2), tdashboard_picks_path(match_id: match.id, odds: match.odds.ftresult.last.awaywin, team: match.away_team, bettype: "1x2", bet: "2"), method: :post, remote: true %></td>
+                    <td><%= link_to "View More", tdashboard_league_match_path(params[:league_id],match.id)%></td>
+								</tr>
+                <% end %>
+                <% end %>
+           
+								</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>

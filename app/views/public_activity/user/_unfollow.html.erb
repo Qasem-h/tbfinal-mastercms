@@ -1,0 +1,23 @@
+												<li>
+													<div class="col1">
+														<div class="cont">
+															<div class="cont-col1">
+																<div class="label label-sm label-info">
+																	<i class="icon-user-follow"></i>
+																</div>
+															</div>
+															<div class="cont-col2">
+																<div class="desc">
+																	 <%= activity.trackable.email %> has just unfollowed you. <!-- <span class="label label-sm label-warning ">
+																	Take action <i class="fa fa-share"></i>
+																	</span> -->
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col2">
+														<div class="date">
+															 <%= distance_of_time_in_words(Time.now, activity.trackable.created_at)  %>
+														</div>
+													</div>
+												</li>

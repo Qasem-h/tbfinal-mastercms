@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12">
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption">Half Time Result</div>
+  </div>
+  <div class="portlet-body">
+    <table class="table table-bordered table-striped table-condensed table-equal">
+			<div class="row"> 
+				<tbody>
+					<tr class="table-center">
+						<td colspan="2">
+							<%= link_to(tdashboard_picks_path(match_id: @match.id, odds: @match.odds.htresult.last.homewin, team: @match.home_team, bettype: "1x2 1st Half", bet: "1"), method: :post, remote: true) do %>
+               <%= @match.home_team %> <%= sprintf('%.2f', @match.odds.htresult.last.homewin) %>
+               <% end %>
+							
+            </td>
+						<td colspan="2">
+							<%= link_to(tdashboard_picks_path(match_id: @match.id, odds: @match.odds.htresult.last.draw, team: "Draw", bettype: "1x2 1st Half", bet: "Draw"), method: :post, remote: true) do %>
+               Draw <%= sprintf('%.2f', @match.odds.htresult.last.draw) %>
+               <% end %>
+							
+            </td>
+						<td colspan="2">
+							<%= link_to(tdashboard_picks_path(match_id: @match.id, odds: @match.odds.htresult.last.awaywin, team: @match.away_team, bettype: "1x2 1st Half", bet: "2"), method: :post, remote: true) do %>
+               <%= @match.away_team %> <%= sprintf('%.2f', @match.odds.htresult.last.awaywin) %>
+               <% end %>
+							
+            </td>
+           </tr>
+         </tbody>
+      </div>
+    </table>
+  </div>
+</div>
+</div>
+</div>

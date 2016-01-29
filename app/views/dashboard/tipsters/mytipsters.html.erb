@@ -1,0 +1,142 @@
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<!-- BEGIN PAGE HEADER-->
+			<!-- BEGIN PAGE HEAD -->
+			<div class="page-head">
+				<!-- BEGIN PAGE TITLE -->
+				<div class="page-title">
+					<h1>My Tipsters <small>Global Ranking</small></h1>
+				</div>
+				<!-- END PAGE TITLE -->
+			</div>
+			<!-- END PAGE HEAD -->
+			<!-- BEGIN PAGE BREADCRUMB -->
+			<ul class="page-breadcrumb breadcrumb">
+				<li>
+					<a href="index.html">Home</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="#">Page Layouts</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="#">Blank Page</a>
+				</li>
+			</ul>
+			<!-- END PAGE BREADCRUMB -->
+			<!-- END PAGE HEADER-->
+			<!-- BEGIN PAGE CONTENT-->
+			<!-- BEGIN TIPSTER 1 -->
+      <% @tipsters.each do |tipster| %>
+      <div class="row">
+				<div class="col-md-12">
+				<!-- BEGIN TIPSTER CARD -->
+				<div class="col-md-12 tb-margin">
+					<div class="portlet light tb-portlet-width">
+						<div class="portlet-title tipster-portlet">
+							<div class="caption tipster-caption">
+								<span class="caption-subject bold font-blue-chambray uppercase">
+								Rank #<%= rank_for(tipster.id) %></span>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="tab-content">
+								<div class="tab-pane active">
+									<div class="scroller" >
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<div class="profile-userpic tb-hide">
+                        <%= image_tag gravatar_for(tipster.email), class: "img-responsive" %>
+											</div>
+											<div class="profile-usertitle">
+												<div class="profile-usertitle-name tb-center tipster-name">
+													 <h3><%= link_to tipster.username,  dashboard_tipster_path(tipster) %></h3>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12 achievements tb-center tb-hide">
+												</div>
+											</div>
+											
+										</div>
+										<div class="col-md-8 col-sm-8 col-xs-12">
+											<div class="row tb-center wdl">
+                        <% tipster.form.each do |t| %>
+                          <% if t == "Win" %>
+												<div class="wdl-win"></div>
+                          <% elsif t == "Draw" %>
+                        <div class="wdl-draw"></div>
+                          <% else %>
+                        <div class="wdl-lose"></div>
+                          <% end %>
+                        <% end %>
+											</div>
+											<div class="row tb-center">
+												<div class="col-md-4 col-sm-4 col-xs-4">
+													<h5 class="uppercase">Balance</h5><p class="tipster-stat"><%= tipster.accounts.last.balance %></p>
+												</div>
+												<div class="col-md-4 col-sm-4 col-xs-4">
+													<h5 class="uppercase">Growth</h5><p class="tipster-stat">
+                            <% if tipster.growth.nil? %>
+                              0.00%
+                            <% else%>
+                              <%= number_to_percentage((tipster.growth) * 100, precision: 2) %>
+                            <% end %>        
+													</p>
+												</div>
+												<div class="col-md-4 col-sm-4 col-xs-4">
+													<h5 class="uppercase">Profit Factor</h5><p class="tipster-stat">3.1</p>
+												</div>
+											</div>
+											<div class="row tb-center">
+												<div class="col-md-3 col-sm-3 col-xs-3">
+													<h5 class="uppercase">Win Rate</h5><p class="tipster-stat">
+                            <% if tipster.win_rate.eql?("--") %>
+                              0.00%
+                            <% else %>
+													  <%= number_to_percentage((tipster.win_rate) * 100, precision: 2) %>
+                            <% end %>
+													</p>
+												</div>
+												<div class="col-md-3 col-sm-3 col-xs-3">
+													<h5 class="uppercase">Followers</h5><p class="tipster-stat">
+                          <%= tipster.followers_count %>
+                          </p>
+												</div>
+												<div class="col-md-3 col-sm-3 col-xs-3">
+													<h5 class="uppercase">Age</h5><p class="tipster-stat">
+                            <%= (tipster.age.to_i / 7).floor %>W</p>
+												</div>
+												<div class="col-md-3 col-sm-3 col-xs-3">
+													<h5 class="uppercase">Bets</h5><p class="tipster-stat">
+                          <%= tipster.total_bets %>
+                          </p>
+												</div>
+											</div>											
+											<div class="row tb-center">
+												<div class="tb-center">
+                          <% if tipster.followed_by?(current_user) %>
+                            <%= link_to 'Unfollow', unfollow_dashboard_tipster_path(tipster), class: 'btn red btn-block tipster-follow-btn tb-center' %>
+                          <% else %>
+                            <%= link_to 'Follow', follow_dashboard_tipster_path(tipster), class: 'btn blue btn-block tipster-follow-btn tb-center' %>
+													<% end %>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- END TIPSTER CARD -->
+				</div>
+			</div>
+      <% end %>
+			<!-- END TIPSTER 1 -->
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+	<!-- END CONTENT -->

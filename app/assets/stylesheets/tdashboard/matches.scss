@@ -1,0 +1,49 @@
+// Place all the styles related to the matches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+//= require css/bootstrap.min.css
+//= require css/uniform.default.css
+//= require css/bootstrap-switch.min.css
+//= require_tree .././admin4/
+
+/* Betslip Styles */
+
+.betslip-label {
+	color: #5E5E5E;
+	margin-left: -30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #fff;
+	overflow: hidden;
+}
+
+.betslip-margin {
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+.betslip-match {
+	margin: 5px 0px;
+	font-size: 12px;
+}
+
+.betslip-header,
+.betslip-alert,
+.table-center,
+.stat-label {
+	text-align: center;
+}
+
+.betslip-header {
+	color: #5E5E5E;
+	padding-top: 50px;
+}
+
+.betslip-alert {
+	font-style: italic;
+}
+
+.simple_form div.input{
+  margin-bottom: 10px;
+  clear: both; /* Required for Webkit, but not for Gecko */
+}

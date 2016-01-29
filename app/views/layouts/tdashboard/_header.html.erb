@@ -1,0 +1,131 @@
+
+<div class="page-header navbar navbar-fixed-top">
+	<!-- BEGIN HEADER INNER -->
+	<div class="page-header-inner">
+		<!-- BEGIN LOGO -->
+		<div class="page-logo">
+			<a href="index.html">
+      <%= image_tag 'tipsterbuddy.png', alt: "logo", class: "logo-default" %>
+			</a>
+			<div class="menu-toggler sidebar-toggler">
+				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+			</div>
+		</div>
+		<!-- END LOGO -->
+		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+		</a>
+		<!-- END RESPONSIVE MENU TOGGLER -->
+		<!-- BEGIN PAGE ACTIONS -->
+		<!-- DOC: Remove "hide" class to enable the page header actions -->
+		<div class="page-actions">
+      <div class="btn-group">
+				<button type="button" class="btn red-haze btn-sm" data-close-others="true">
+				<span class="hidden-sm hidden-xs">Balance: <%= current_tipster.accounts.last.balance %></span>
+				</button>
+                 
+               </div>
+		</div>
+		<!-- END PAGE ACTIONS -->
+		<!-- BEGIN PAGE TOP -->
+		<div class="page-top">
+			<!-- END HEADER SEARCH BOX -->
+			<!-- BEGIN TOP NAVIGATION MENU -->
+			<div class="top-menu">
+				<ul class="nav navbar-nav pull-right">
+					<li class="separator hide">
+					</li>
+					<!-- BEGIN NOTIFICATION DROPDOWN -->
+					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+					<!-- END NOTIFICATION DROPDOWN -->
+					<li class="separator hide">
+					</li>
+					<!-- BEGIN INBOX DROPDOWN -->
+					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+          <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+            <i class="fa fa-sticky-note-o"></i>
+            <span class="badge badge-default total-bets-count">
+                       <%= render 'layouts/tdashboard/pick_count' %>
+            </span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="external">
+                <%= simple_form_for @betslip, url: tdashboard_orders_path, method: :create do |f| %>
+                <ul>
+                <div id="slip-details">
+                <%= render "layouts/tdashboard/slip_details" %>
+                </div>
+                <li class="betslip-label">Stake:
+                <div class="pull-right">
+                <%= f.input :stake, input_html: { id: "key_stake", class: "stake", value: 0, size: 100}, label: false %>
+                <%= f.input :possible_winnings, input_html: { class: "possible-winning" }, label: false, as: :hidden %>
+                </div>
+                </li>
+                </ul>
+                <div class="betslip-margin pull-right">
+                <%= f.submit "Submit", class: "btn btn-big btn-primary" %>
+                </div>
+                <% end %>
+              </li>
+              <li>
+                <div class="error"></div>                
+                <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
+                  <div class="bet-slips col-md-12 dropdown-bg-fixed">
+                    <% if @slip.picks.count == 0%>
+                    No Picks yet!
+                    <% else %>
+                    <%= render @slip %>
+                    <% end %>
+                  </div>
+                </ul>
+              </li>
+            </ul>
+          </li>
+					<!-- END INBOX DROPDOWN -->
+					<li class="separator hide">
+					</li>
+          <!-- BEGIN NOTIFICATION -->
+          <%= render 'layouts/tdashboard/notifications' %>
+
+          <!-- END NOTIFICATION -->
+					<li class="separator hide">
+					</li>
+					<!-- END TODO DROPDOWN -->
+					<!-- BEGIN USER LOGIN DROPDOWN -->
+					<li class="dropdown dropdown-user dropdown-dark">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+						<span class="username username-hide-on-mobile">
+						<%= current_tipster.username %> </span>
+            <%= image_tag gravatar_for(current_tipster.email), class: "img-circle" %>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-default">
+							<li>
+								<a href="extra_profile.html">
+								<i class="icon-user"></i> My Profile </a>
+							</li>
+              
+							<li>
+                <%= link_to tdashboard_orders_path do %>
+      					  <i class="icon-envelope-open"></i>
+      					  My Betslips
+                <% end %>
+							</li>
+							<li class="divider">
+							</li>
+							<li>
+								<%= link_to(destroy_tipster_session_path, method: :delete) do %> 
+                <i class="icon-key"></i> Logout
+                <% end %>
+							</li>
+						</ul>
+					</li>
+					<!-- END USER LOGIN DROPDOWN -->
+				</ul>
+			</div>
+			<!-- END TOP NAVIGATION MENU -->
+		</div>
+		<!-- END PAGE TOP -->
+	</div>
+	<!-- END HEADER INNER -->
+</div>

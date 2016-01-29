@@ -1,0 +1,408 @@
+				<div class="row">
+	    			<div class="col-md-6">
+						<!-- BEGIN ACTIVITIES FEED -->
+						<div class="portlet light bordered">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="icon-share font-blue-steel hide"></i>
+											<span class="caption-subject font-blue-madison bold uppercase">Activities Feed</span>
+										</div>
+										<div class="tools pull-right">
+											<a href="javascript:;" class="collapse" data-original-title="" title="" style="margin-left: 25px;"></a>
+										</div>
+										<div class="actions">
+											<div class="btn-group">
+												<a class="btn btn-sm btn-default btn-circle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+												Filter By <i class="fa fa-angle-down"></i>
+												</a>
+												<div class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+													<label><input type="checkbox" checked=""/> Followers</label>
+													<label><input type="checkbox" checked=""/> Reviews</label>
+													<label><input type="checkbox" checked=""/> Transactions</label>
+													<label><input type="checkbox" checked=""/> Ranking</label>
+													<label><input type="checkbox" checked=""/> System</label>
+													<label><input type="checkbox" checked=""/> Achivements</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="portlet-body">
+										<div class="scroller" data-always-visible="1" data-rail-visible="0">
+											<ul class="feeds">
+                        
+																<%= render_activities(@activities) %>				
+											</ul>
+										</div>
+										<div class="scroller-footer">
+											<div class="btn-arrow-link pull-right">
+												<a href="javascript:;">See All Records</a>
+												<i class="icon-arrow-right"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						<!-- END ACTIVITIES FEED-->
+	    			<div class="col-md-6">
+						<!-- BEGIN TREND-->
+						<div class="portlet light bordered">
+							<div class="portlet-title">
+								<div class="caption caption-md font-blue-madison">
+									<i class="icon-bar-chart theme-font hide"></i>
+									<span class="caption-subject theme-font bold uppercase">Account Balance</span>
+									<span class="caption-helper hide">Trend</span>
+								</div>
+								<div class="tools pull-right">
+									<a href="javascript:;" class="collapse" data-original-title="" title="" style="margin-left: 25px;"></a>
+								</div>
+								<div class="actions">
+									<div class="btn-group btn-group-devided" data-toggle="buttons">
+										<label class="btn btn-transparent grey-salsa btn-circle btn-sm active">
+										<input type="radio" name="options" class="toggle" id="option1">Today</label>
+										<label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+										<input type="radio" name="options" class="toggle" id="option2">Week</label>
+										<label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+										<input type="radio" name="options" class="toggle" id="option2">Month</label>
+										<label class="btn btn-transparent grey-salsa btn-circle btn-sm">
+										<input type="radio" name="options" class="toggle" id="option2">Year</label>
+									</div>
+								</div>
+							</div>
+							<div class="portlet-body">
+								<div class="row list-separated">
+									<div class="col-md-3 col-sm-3 col-xs-6">
+										<div class="font-grey-mint font-sm">
+											 Total Sales
+										</div>
+										<div class="uppercase font-hg font-red-flamingo">
+											 13,760 <span class="font-lg font-grey-mint">$</span>
+										</div>
+									</div>
+									<div class="col-md-3 col-sm-3 col-xs-6">
+										<div class="font-grey-mint font-sm">
+											 Revenue
+										</div>
+										<div class="uppercase font-hg theme-font">
+											 4,760 <span class="font-lg font-grey-mint">$</span>
+										</div>
+									</div>
+									<div class="col-md-3 col-sm-3 col-xs-6">
+										<div class="font-grey-mint font-sm">
+											 Expenses
+										</div>
+										<div class="uppercase font-hg font-purple">
+											 11,760 <span class="font-lg font-grey-mint">$</span>
+										</div>
+									</div>
+									<div class="col-md-3 col-sm-3 col-xs-6">
+										<div class="font-grey-mint font-sm">
+											 Growth
+										</div>
+										<div class="uppercase font-hg font-blue-sharp">
+											 9,760 <span class="font-lg font-grey-mint">$</span>
+										</div>
+									</div>
+								</div>
+								<ul class="list-separated list-inline-xs hide">
+									<li>
+										<div class="font-grey-mint font-sm">
+											 Total Sales
+										</div>
+										<div class="uppercase font-hg font-red-flamingo">
+											 13,760 <span class="font-lg font-grey-mint">$</span>
+										</div>
+									</li>
+									<li>
+									</li>
+									<li class="border">
+										<div class="font-grey-mint font-sm">
+											 Revenue
+										</div>
+										<div class="uppercase font-hg theme-font">
+											 4,760 <span class="font-lg font-grey-mint">$</span>
+										</div>
+									</li>
+									<li class="divider">
+									</li>
+									<li>
+										<div class="font-grey-mint font-sm">
+											 Expenses
+										</div>
+										<div class="uppercase font-hg font-purple">
+											 11,760 <span class="font-lg font-grey-mint">$</span>
+										</div>
+									</li>
+									<li class="divider">
+									</li>
+									<li>
+										<div class="font-grey-mint font-sm">
+											 Growth
+										</div>
+										<div class="uppercase font-hg font-blue-sharp">
+											 9,760 <span class="font-lg font-grey-mint">$</span>
+										</div>
+									</li>
+								</ul>
+								<div id="sales_statistics" class="portlet-body-morris-fit morris-chart" style="height: 272px">
+								</div>
+							</div>
+						</div>
+						<!-- END TREND-->
+					</div>
+	    		</div>
+	    		<div class="row">
+					<div class="col-md-6">
+	    				<!-- BEGIN BAR CHART-->
+						<div class="portlet light bordered">
+							<div class="portlet-title">
+								<div class="caption font-blue-madison">
+									<span class="caption-subject bold uppercase">Winnings</span>
+									<span class="caption-helper">and Stakes</span>
+								</div>
+								<div class="tools pull-right">
+									<a href="javascript:;" class="collapse" data-original-title="" title="" style="margin-left: 25px;"></a>
+								</div>
+								<div class="actions">
+									<a class="btn btn-circle btn-icon-only btn-default fullscreen" href="#">
+									</a>
+								</div>
+							</div>
+							<div class="portlet-body">
+    							<div id="columnLine" class="columnLine"></div>
+							</div>
+						</div>
+						<!-- END BAR CHART-->
+	    			</div>
+					<div class="col-md-6">
+	    				<!-- BEGIN FAVOURITE LEAGUES-->
+						<div class="portlet light bordered">
+							<div class="portlet-title">
+								<div class="caption">
+									<span class="caption-subject bold uppercase font-blue-madison">Favourite Leagues</span>
+									<span class="caption-helper hide"></span>
+								</div>
+								<div class="tools pull-right">
+									<a href="javascript:;" class="collapse" data-original-title="" title="" style="margin-left: 25px;"></a>
+								</div>
+								<div class="actions">
+									<a class="btn btn-circle btn-icon-only btn-default fullscreen" href="#">
+									</a>
+								</div>
+							</div>
+							<div class="portlet-body">
+    							<div id="animated-pie-chart" class="animated-pie-chart"></div>
+							</div>
+						</div>
+						<!-- END FAVOURITE LEAGUES-->
+	    			</div>	
+				</div>
+				<div class="row">
+		<div class="col-md-6">
+			<!-- BEGIN TOP MATCHES-->
+			<div class="portlet light bordered">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="icon-share font-blue-steel hide"></i>
+								<span class="caption-subject font-blue-madison bold uppercase">TOP MATCHES</span>
+							</div>
+							<div class="tools pull-right">
+								<a href="javascript:;" class="collapse" data-original-title="" title="" style="margin-left: 25px;"></a>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<div class="scroller" style="height: 360px;" data-always-visible="1" data-rail-visible="0">
+							<table class="table-bordered table-striped table-condensed" style="width:100%;">
+								<!-- <thead>
+									<tr>
+										<th colspan="5">Premier League</th>
+									</tr>
+								</thead> -->
+								<tbody style="width:100%">
+									<tr>
+										<td>23 Sep 2015 : 12:00</td>
+										<td><a href="#">Newcastle 4.8</a></td>
+										<td><a href="#">Draw 3.7</a></td>
+										<td><a href="#">Chelsea 1.65</a></td>
+										<td><a href="#">All Markets</a></td>
+									</tr>
+									<tr>
+										<td>24 Sep 2015 : 14:00</td>
+										<td><a href="#">Melo the Dog Club 2.8</a></td>
+										<td><a href="#">Draw 2.8</a></td>
+										<td><a href="#">Waiwai United Cry Cry 3.0</a></td>
+										<td><a href="#">All Markets</a></td>
+									</tr>
+									<tr>
+										<td>23 Sep 2015 : 14:30</td>
+										<td><a href="#">Arsenal 1.8</a></td>
+										<td><a href="#">Draw 3.9</a></td>
+										<td><a href="#">Dortmund 4.40</a></td>
+										<td><a href="#">All Markets</a></td>
+									</tr>
+									<tr>
+										<td>23 Sep 2015 : 10:00</td>
+										<td><a href="#">Tahm Kench United 1.9</a></td>
+										<td><a href="#">Draw 3.3</a></td>
+										<td><a href="#">AFC Riven in Rivers 2.64</a></td>
+										<td><a href="#">All Markets</a></td>
+									</tr>
+									<tr>
+										<td>23 Sep 2015 : 1:00</td>
+										<td><a href="#">Teemo 3.3</a></td>
+										<td><a href="#">Draw 2.7</a></td>
+										<td><a href="#">Leona FC 3.65</a></td>
+										<td><a href="#">All Markets</a></td>
+									</tr>
+									<tr>
+										<td>23 Sep 2015 : 12:00</td>
+										<td><a href="#">Newcastle 4.8</a></td>
+										<td><a href="#">Draw 3.7</a></td>
+										<td><a href="#">Chelsea 1.65</a></td>
+										<td><a href="#">All Markets</a></td>
+									</tr>
+									<tr>
+										<td>24 Sep 2015 : 14:00</td>
+										<td><a href="#">Melo the Dog Club 2.8</a></td>
+										<td><a href="#">Draw 2.8</a></td>
+										<td><a href="#">Waiwai United Cry Cry 3.0</a></td>
+										<td><a href="#">All Markets</a></td>
+									</tr>
+									<tr>
+										<td>23 Sep 2015 : 14:30</td>
+										<td><a href="#">Arsenal 1.8</a></td>
+										<td><a href="#">Draw 3.9</a></td>
+										<td><a href="#">Dortmund 4.40</a></td>
+										<td><a href="#">All Markets</a></td>
+									</tr>
+									<tr>
+										<td>23 Sep 2015 : 10:00</td>
+										<td><a href="#">Tahm Kench United 1.9</a></td>
+										<td><a href="#">Draw 3.3</a></td>
+										<td><a href="#">AFC Riven in Rivers 2.64</a></td>
+										<td><a href="#">All Markets</a></td>
+									</tr>
+									<tr>
+										<td>23 Sep 2015 : 1:00</td>
+										<td><a href="#">Teemo 3.3</a></td>
+										<td><a href="#">Draw 2.7</a></td>
+										<td><a href="#">Leona FC 3.65</a></td>
+										<td><a href="#">All Markets</a></td>
+									</tr>	
+								</tbody>
+							</table>
+						</div>
+						</div>
+					<div class="scroller-footer">
+						<div class="btn-arrow-link pull-right">
+							<a href="javascript:;">See All Matches Today</a>
+							<i class="icon-arrow-right"></i>
+						</div>
+					</div>
+					</div>
+				</div>
+    		<div class="col-md-6">
+    			<!-- BEGIN MATCH BIAS-->
+    			<div class="portlet light bordered">
+    				<div class="portlet-title">
+    					<div class="caption">
+    						<i class="icon-share font-blue-madison hide"></i>
+    						<span class="caption-subject font-blue-madison bold uppercase">MATCH BIAS 1x2</span>
+    					</div>
+    					<div class="tools pull-right">
+    						<a href="javascript:;" class="collapse" data-original-title="" title="" style="margin-left: 25px;"></a>
+    					</div>
+    				</div>
+    				<div class="portlet-body">
+    					<div class="scroller" style="height: 360px;" data-always-visible="1" data-rail-visible="0">
+    					<div>
+    						<h4>Arsenal v Chelsea</h4>
+    					</div>
+    					<div class="progress match-bias">
+    						<div class="progress-bar blue-madison" style="width: 50%">
+    							<span>50%</span>
+    						</div>
+    						<div class="progress-bar grey-steel" style="width: 22%">
+    							<span>22%</span>
+    						</div>
+    						<div class="progress-bar purple-plum" style="width: 28%">
+    							<span>28%</span>
+    						</div>
+    					</div>
+    					<div>
+    						<h4>Machester United v West Ham</h4>
+    					</div>
+    					<div class="progress match-bias">
+    						<div class="progress-bar blue-madison" style="width: 47%">
+    							<span>47%</span>
+    						</div>
+    						<div class="progress-bar grey-steel" style="width: 22%">
+    							<span>22%</span>
+    						</div>
+    						<div class="progress-bar purple-plum" style="width: 31%">
+    							<span>31%</span>
+    						</div>
+    					</div>
+    					<div>
+    						<h4>Real Madrid v Althetic Madrid</h4>
+    					</div>
+    					<div class="progress match-bias">
+    						<div class="progress-bar blue-madison" style="width: 33%">
+    							<span>33%</span>
+    						</div>
+    						<div class="progress-bar grey-steel" style="width: 60%">
+    							<span>60%</span>
+    						</div>
+    						<div class="progress-bar purple-plum" style="width: 7%">
+    							<span>7%</span>
+    						</div>
+    					</div>
+    					<div>
+    						<h4>Dortmund v Bayern Munich</h4>
+    					</div>
+    					<div class="progress match-bias">
+    						<div class="progress-bar blue-madison" style="width: 27%">
+    							<span>27%</span>
+    						</div>
+    						<div class="progress-bar grey-steel" style="width: 15%">
+    							<span>15%</span>
+    						</div>
+    						<div class="progress-bar purple-plum" style="width: 58%">
+    							<span>58%</span>
+    						</div>
+    					</div>
+    					<div>
+    						<h4>Italy v Germany</h4>
+    					</div>
+    					<div class="progress match-bias">
+    						<div class="progress-bar blue-madison" style="width: 24%">
+    							<span>24%</span>
+    						</div>
+    						<div class="progress-bar grey-steel" style="width: 18%">
+    							<span>18%</span>
+    						</div>
+    						<div class="progress-bar purple-plum" style="width: 58%">
+    							<span>58%</span>
+    						</div>
+    					</div>
+    					<div>
+    						<h4>Groot v Teemo</h4>
+    					</div>
+    					<div class="progress match-bias">
+    						<div class="progress-bar blue-madison" style="width: 33%">
+    							<span>33%</span>
+    						</div>
+    						<div class="progress-bar grey-steel" style="width: 27%">
+    							<span>27%</span>
+    						</div>
+    						<div class="progress-bar purple-plum" style="width: 40%">
+    							<span>40%</span>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="scroller-footer">
+    				<div class="btn-arrow-link pull-right">
+    					<a href="javascript:;">See All Matches Today</a>
+    					<i class="icon-arrow-right"></i>
+    				</div>
+    			</div>

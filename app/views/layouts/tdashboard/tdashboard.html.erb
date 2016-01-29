@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TbFinal</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
+  <%= stylesheet_link_tag "application", params[:controller] %>
+  <%= javascript_include_tag 'tdashboard1', params[:controller] %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="page-header-fixed page-sidebar-closed-hide-logo ">
+<%= render 'layouts/tdashboard/header' %>
+<div class="clearfix">
+</div>
+<div class="page-container">
+	<%= render 'layouts/tdashboard/sidebar' %>
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+      <%= breadcrumbs pretext: "You are here: ",
+                      separator: " &rsaquo; " %>
+			<%= yield %>
+		</div>
+	</div>
+</div>
+<%= render 'layouts/tdashboard/footer' %>
+
+</body>
+</html>

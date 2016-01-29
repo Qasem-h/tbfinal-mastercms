@@ -1,0 +1,56 @@
+	    			<div class="col-md-6">
+						<!-- BEGIN PORTLET 1-->
+						<div class="portlet light bordered">
+							<div class="portlet-title">
+								<div class="caption caption-md font-blue-madison">
+									<i class="icon-bar-chart theme-font hide"></i>
+									<span class="caption-subject theme-font bold uppercase">#<%= rank_for(current_tipster.id)%></span>
+									<span class="caption-helper">Global Ranking</span>
+								</div>
+								<div class="tools">
+									<a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+								</div>
+							</div>
+							<div class="portlet-body">
+								<div class="table-scrollable table-scrollable-borderless">
+									<table class="table table-hover table-light">
+										<tbody>
+											<tr>
+												<td class="uppercase tb-stat-sm">Balance</td>
+												<td class="tipster-stat font-blue tb-left" colspan="3"><%= number_to_currency(current_tipster.accounts.last.balance) %></td>
+											</tr>
+											<tr>
+												<td class="uppercase tb-stat-sm">Win (%)</td>
+												<td class="tipster-stat font-blue tb-left">
+                        <% if current_tipster.win_rate.eql?("--") %>
+                           0.00%
+                        <% else %>
+                       	  <%= number_to_percentage((current_tipster.win_rate) * 100, precision: 2) %>
+                        <% end %>
+                        </td>
+												<td class="uppercase tb-stat-sm">Growth</td>
+												<td class="tipster-stat font-blue tb-left">
+                        <%= number_to_percentage((current_tipster.growth) * 100, precision: 2) %>
+                        </td>
+											</tr>
+											<tr>
+												<td class="uppercase tb-stat-sm">Followers</td>
+												<td class="tipster-stat font-blue tb-left"><%= current_tipster.followers_count %></td>
+												<td class="uppercase tb-stat-sm">Total Bets</td>
+												<td class="tipster-stat font-blue tb-left"><%= current_tipster.total_bets %></td>
+											</tr>
+											<tr>
+												<td class="uppercase tb-stat-sm">Profit Factor</td>
+												<td class="tipster-stat font-blue tb-left">5.44</td>
+												<td class="uppercase tb-stat-sm">Age</td>
+												<td class="tipster-stat font-blue tb-left">
+                        <%= (current_tipster.age.to_i / 7).floor %>W
+                        </td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<!-- END PORTLET 1-->
+					</div>

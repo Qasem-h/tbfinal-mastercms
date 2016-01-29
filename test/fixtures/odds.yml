@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  homevalue: MyString
+  awayvalue: MyString
+  homewin: 9.99
+  awaywin: 9.99
+  draw: 9.99
+  total: MyString
+  under: 9.99
+  over: 9.99
+  match_id: 
+  odds_type_id: 
+
+two:
+  homevalue: MyString
+  awayvalue: MyString
+  homewin: 9.99
+  awaywin: 9.99
+  draw: 9.99
+  total: MyString
+  under: 9.99
+  over: 9.99
+  match_id: 
+  odds_type_id: 

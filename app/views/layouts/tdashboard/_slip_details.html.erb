@@ -1,0 +1,3 @@
+                <li class="betslip-label">Bets : <div class="pull-right"><%= @slip.picks.count %></div></li>
+                <li class="betslip-label">Total Odds : <div class="pull-right" id="total_odds"> <%= number_with_precision(@slip.possible_winningss, precision: 2) %></div></li>
+                <li class="betslip-label">Max Winnings: <div class="pull-right possible-winning"></div></li>
