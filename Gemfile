@@ -33,8 +33,9 @@ gem 'haml-rails'
 gem 'redis'
 gem 'newrelic_rpm'
 gem 'comfortable_mexican_sofa','~> 1.12.8'
-gem 'comfy_blog','~> 1.12.3'
+gem 'comfy_blog',:git => "git@github.com:/soulzer/comfy-blog.git"
 gem 'shareable'
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 
 group :development, :test do
 

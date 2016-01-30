@@ -11,6 +11,9 @@
   <h1>
     <%= link_to post.title, comfy_blog_post_path(@cms_site.path, @blog.path, post.slug) %>
   </h1>
+  <div class="featuredimage">
+    <%= image_tag post.avatar(:medium) %>
+  </div> 
   <div class="author">
     <%= post.author %>
   </div>

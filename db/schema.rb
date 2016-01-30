@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125152709) do
+ActiveRecord::Schema.define(version: 20160130072625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,18 +72,22 @@ ActiveRecord::Schema.define(version: 20160125152709) do
   add_index "comfy_blog_comments", ["post_id", "is_published", "created_at"], name: "index_blog_comments_on_post_published_created", using: :btree
 
   create_table "comfy_blog_posts", force: :cascade do |t|
-    t.integer  "blog_id",                                  null: false
-    t.string   "title",                                    null: false
-    t.string   "slug",                                     null: false
+    t.integer  "blog_id",                                         null: false
+    t.string   "title",                                           null: false
+    t.string   "slug",                                            null: false
     t.text     "content"
-    t.string   "excerpt",      limit: 1024
+    t.string   "excerpt",             limit: 1024
     t.string   "author"
-    t.integer  "year",                                     null: false
-    t.integer  "month",        limit: 2,                   null: false
-    t.boolean  "is_published",              default: true, null: false
-    t.datetime "published_at",                             null: false
+    t.integer  "year",                                            null: false
+    t.integer  "month",               limit: 2,                   null: false
+    t.boolean  "is_published",                     default: true, null: false
+    t.datetime "published_at",                                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "comfy_blog_posts", ["created_at"], name: "index_comfy_blog_posts_on_created_at", using: :btree
@@ -257,6 +261,13 @@ ActiveRecord::Schema.define(version: 20160125152709) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "post"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "leagues", force: :cascade do |t|
     t.string   "name"
